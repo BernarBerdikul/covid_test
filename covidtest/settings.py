@@ -167,13 +167,13 @@ CORS_ALLOW_HEADERS = [
 
 LANGUAGE_CODE = "ru-RU"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Almaty"
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 IS_LOCAL = True
 IS_TEST = True

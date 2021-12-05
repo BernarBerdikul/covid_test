@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.files import File
 
 
-def create_qr(application, schedule) -> None:
+def create_qr(application) -> None:
     """method for QR-code generating"""
     data: str = f"{settings.SITE_URL}/{application.id}"
     buffer = BytesIO()
@@ -21,5 +21,4 @@ def create_qr(application, schedule) -> None:
     img.save(buffer, "PNG")
     f_name: str = f"qr_code_{application.id}.png"
     application.qr_code.save(f_name, File(buffer), save=False)
-    application.schedule_id = schedule.id
     application.save()

@@ -38,15 +38,20 @@ class TestApplicationViewSet(viewsets.ViewSet):
         application = serializer_application.save(user_id=request.user.id)
         """ get last schedule """
         last_schedule = Schedule.objects.last()
-        date_start: datetime = (
-            last_schedule.date_end if last_schedule else application.created_at
-        )
+        """ get date start """
+        date_start = application.created_at
+        if last_schedule and last_schedule.date_end > date_start:
+            date_start = last_schedule.date_end
+        """ get date end """
         date_end: datetime = date_start + timedelta(hours=1)
         day: int = date_start.weekday()
         """ create schedule for application """
-        schedule = Schedule.objects.create(
-            day=day, date_start=date_start, date_end=date_end
+        Schedule.objects.create(
+            day=day,
+            date_start=date_start,
+            date_end=date_end,
+            application_id=application.id
         )
-        create_qr(application=application, schedule=schedule)
+        create_qr(application=application)
         update_socket_new_object(application=application)
         return Response({}, status=status.HTTP_201_CREATED)

@@ -42,14 +42,6 @@ class TestApplication(TimestampMixin):
         related_name="applications",
         verbose_name="Пользователь",
     )
-    schedule = models.OneToOneField(
-        "core.Schedule",
-        blank=True,
-        null=True,
-        on_delete=models.CASCADE,
-        related_name="application",
-        verbose_name="Расписание",
-    )
 
     @property
     def get_qr_code(self) -> str:
@@ -87,6 +79,14 @@ class Schedule(TimestampMixin):
     )
     date_start = models.DateTimeField(verbose_name="Дата начала")
     date_end = models.DateTimeField(verbose_name="Дата конца")
+    application = models.OneToOneField(
+        "core.TestApplication",
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name="schedule",
+        verbose_name="Расписание"
+    )
 
     @property
     def get_day(self) -> str:
