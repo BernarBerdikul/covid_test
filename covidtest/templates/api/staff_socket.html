@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <input id="email" type="text" value="bernar.berdikul2@mail.ru"/>
+    <input id="send" type="button" value="send">
+    <script>
+        var email = document.querySelector('#email').value
+        var ws = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/staff_socket/'
+            + email
+            + '/'
+        );
+
+        ws.onopen = function(event) {
+            console.log("WebSocket is open now.");
+        };
+
+        ws.onmessage = function(event){
+            const data = JSON.parse(event.data);
+            console.log(data['message']);
+        };
+
+        ws.onclose = function(event){
+            console.error('Socket closed unexpectedly');
+        };
+    </script>
+</body>
+</html>
