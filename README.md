@@ -1,4 +1,13 @@
+Зависимости:
+* Redis 5+
+* Django 3+
+* Python 3.9+
+
 создать и запустить виртуальное пространство:
+`python -m venv env`
+
+Запустить можно в терминале `. ./env/Scripts/activate`
+Либо в настройках вашей IDE
 
 Сколнировать репозиторий: 
 `https://github.com/BernarBerdikul/covid_test.git`
