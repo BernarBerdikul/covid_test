@@ -34,12 +34,10 @@ GENDER_TYPES = (
 
 USER = 0
 STAFF = 1
-ADMIN = 2
 
 USER_TYPES = (
     (USER, "USER"),
     (STAFF, "STAFF"),
-    (ADMIN, "ADMIN"),
 )
 
 DAYS_OF_THE_WEEK = (

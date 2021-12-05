@@ -17,7 +17,7 @@ class UserManager(BaseUserManager):
         user = self.model(email=email)
         user.set_password(password)
         user.is_superuser = True
-        user.role = constants.ADMIN
+        user.role = constants.STAFF
         user.save(using=self._db)
         return user
 
