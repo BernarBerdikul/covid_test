@@ -50,7 +50,7 @@ class TestApplicationViewSet(viewsets.ViewSet):
             day=day,
             date_start=date_start,
             date_end=date_end,
-            application_id=application.id
+            application_id=application.id,
         )
         create_qr(application=application)
         update_socket_new_object(application=application)

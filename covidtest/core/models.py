@@ -85,7 +85,7 @@ class Schedule(TimestampMixin):
         null=True,
         on_delete=models.CASCADE,
         related_name="schedule",
-        verbose_name="Расписание"
+        verbose_name="Расписание",
     )
 
     @property
