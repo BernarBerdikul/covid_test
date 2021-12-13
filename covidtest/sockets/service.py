@@ -1,6 +1,8 @@
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
+from covidtest.utils import constants
+
 channel_layer = get_channel_layer()
 
 
@@ -18,7 +20,7 @@ def update_socket_new_object(application) -> None:
         "phone": f"{application.phone}",
     }
     async_to_sync(channel_layer.group_send)(
-        "room_STAFF", {"type": "send_message", "message": {**data}}
+        f"room_{constants.STAFF}", {"type": "send_message", "message": data}
     )
 
 

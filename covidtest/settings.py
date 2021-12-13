@@ -4,6 +4,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR = os.path.join(BASE_DIR, "covidtest")
 
+# Знаю, что по хорошему такое следует хранить в переменных среды
+# Но для pet проекта, можно сделать исключение
 SECRET_KEY = "django-insecure-1=ewy26t74dxa%llix)nqqo+=$=)f)8foz6yo^hsfis-i#2z0("
 
 DEBUG = True

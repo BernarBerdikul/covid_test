@@ -6,13 +6,13 @@ from covidtest.utils import constants, messages
 from covidtest.utils.exceptions import CommonException
 
 
-def validate_phone_number(value):
+def validate_phone_number(value, key: str = "phone"):
     try:
         z = phonenumbers.parse(value, None)
     except Exception:
-        raise CommonException(detail=messages.PHONE_INCORRECT)
+        raise CommonException(detail={f"{key}": messages.PHONE_INCORRECT})
     if not phonenumbers.is_valid_number(z):
-        raise CommonException(detail=messages.PHONE_INCORRECT)
+        raise CommonException(detail={f"{key}": messages.PHONE_INCORRECT})
 
 
 def validate_password(value, key: str = "password"):

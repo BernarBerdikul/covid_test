@@ -7,5 +7,5 @@ def get_application_or_404(pk: int):
         TestApplication.objects.filter(pk=pk).select_related("schedule").first()
     )
     if not application:
-        raise NotFoundException(detail="Нет такого объекта дятел")
+        raise NotFoundException(detail={"notGiven": "Нет такого объекта"})
     return application

@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "ad00b2df-8c43-40cf-96e4-8670eac1691f",
+		"name": "Slava covidtest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "user profile",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{user_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/api/v1/users/get_profile/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"get_profile",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"bernar.berdikul@mail.ru\",\r\n    \"password\": \"Qwerty123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/api/v1/users/login/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"bernar.berdikul@mail.ru\",\r\n    \"password\": \"Qwerty123\",\r\n    \"password_confirm\": \"Qwerty123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/api/v1/users/register/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "application",
+					"item": [
+						{
+							"name": "application",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{user_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/api/v1/applications/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create application",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{user_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"Samal-2, Almaty\",\r\n    \"full_name\": \"Bernar Berdikul\",\r\n    \"age\": 22,\r\n    \"gender\": 0,\r\n    \"phone\": \"+77074958782\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/api/v1/applications/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"applications",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api_staff",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "user profile",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{staff_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/api_staff/v1/users/get_profile/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api_staff",
+										"v1",
+										"users",
+										"get_profile",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "application",
+					"item": [
+						{
+							"name": "update application result",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{staff_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"result\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/api_staff/v1/applications/update_result/?pk=5",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api_staff",
+										"v1",
+										"applications",
+										"update_result",
+										""
+									],
+									"query": [
+										{
+											"key": "pk",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update application status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{staff_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n    \"status\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/api_staff/v1/applications/update_status/?pk=6",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api_staff",
+										"v1",
+										"applications",
+										"update_status",
+										""
+									],
+									"query": [
+										{
+											"key": "pk",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "application",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{staff_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/api_staff/v1/applications/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api_staff",
+										"v1",
+										"applications",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "application remove",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{staff_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/api_staff/v1/applications/2/",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"api_staff",
+										"v1",
+										"applications",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

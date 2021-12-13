@@ -65,5 +65,5 @@ class TestApplicationViewSet(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         application = get_application_or_404(pk=pk)
         if application.status != constants.CREATED:
-            raise CommonException(detail="Уй бля, незя удалять")
+            raise CommonException(detail={"remove": "Can not remove"})
         return Response({})
